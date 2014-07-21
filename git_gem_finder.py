@@ -16,7 +16,7 @@ def show_index():
 	api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
 	#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api
 	# How do you only show certain mixes passing the include qualifications??
-	mix_url = "http://8tracks.com/mix_sets/tags:chill+weed.json?include=mixes[certification[gold]]&api_key="+api+'&api_version=3'
+	mix_url = "http://8tracks.com/mix_sets/tags:chill+electronic.json?include=mixes[certification[gold]]&api_key="+api+'&api_version=3'
 	top_tag_url = "http://8tracks.com/tags.json?api_key="+api	
 	# genre = raw_input("Enter mood, genre or activity")
 	r = requests.get(mix_url)
