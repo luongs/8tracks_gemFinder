@@ -24,6 +24,8 @@ def show_index():
 		r.text
 		json_result = json.loads(r.text)
 		#print(r.text)
+		if(int(r.headers['x-requests-left'])<30):
+			print("Warning: "+r.headers['x-requests-left']+"left" )
 		for results in json_result['mix_set']['mixes']:
 			if (results['certification']=='gold'):
 				print "Mix name: "+results['name']
