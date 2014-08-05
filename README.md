@@ -10,10 +10,17 @@ Progress:
 * The 8tracks API is successfully queried for mixes and prints out the top 10 return queries
   for specific mix types
 * Filtering queries in order to return specific certifications [gem/gold/platinum]
-* Returns queries for the top 10 pages in trending or popular	
+* Returns queries for the top 10 pages in trending or popular
+* Allow user input for different tags and certifications	
+* Implement form to allow user input and search for tags
 
 ================
-Next steps: 
-* Allow user input for different tags and certifications
+Next steps:
+* Sort results if more than 1 certification is selected
 * Display return queries on webpage 
-* Implement form to allow user input and search for tags 
+* Improve UI 
+
+
+================
+Future features: 
+* Find certified mixes for a user's profile (eg: find all gold mixes published by a user)
