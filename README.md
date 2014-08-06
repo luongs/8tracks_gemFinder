@@ -24,3 +24,6 @@ Next steps:
 ================
 Future features: 
 * Find certified mixes for a user's profile (eg: find all gold mixes published by a user)
+* Play mixes from the website
+	* Enable forwarding
+* Log in to your account and add mixes directly
