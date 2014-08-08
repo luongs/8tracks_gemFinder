@@ -16,23 +16,23 @@ def show_index():
 	if request.method == 'POST':
 		# get input request
 		mix_dictionary = {}
-		tags = request.form['queryBox']
-		gemList = request.form.getlist('certification')
-		mix_dictionary = search_mix(tags,gemList)
+		tags_query = request.form['queryBox']
+		gemList_query = request.form.getlist('certification')
+		mix_dictionary = search_mix(tags_query,gemList_query)
 		for key in mix_dictionary: 
 			print key+": ", 
 			print mix_dictionary[key]
 	return render_template('index.html', mix_dictionary = mix_dictionary)
 
-def search_mix(tags,gemList): 
-	if tags and gemList:
+def search_mix(tags_query,gemList_query): 
+	if tags_query and gemList_query:
 		api = 'API_KEY'
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
 		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
 		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
 		mix_dictionary = {}
 		for i in range(1,10):
-			mix_url = "http://8tracks.com/mix_sets/tags:"+tags+\
+			mix_url = "http://8tracks.com/mix_sets/tags:"+tags_query+\
 						":popular.json?include=mixes[likes_count]&page="+str(i)+\
 						"&api_key="+api+'&api_version=3'
 			r = requests.get(mix_url)
@@ -45,7 +45,7 @@ def search_mix(tags,gemList):
 				break
 			#print(r.text)
 			for results in json_result['mix_set']['mixes']:
-				for gem in gemList:
+				for gem in gemList_query:
 					if (results['certification']==gem):
 						#print "Mix name: "+results['name']
 						#print "Likes count: "+str(results['likes_count'])
