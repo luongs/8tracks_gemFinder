@@ -13,11 +13,12 @@ Progress:
 * Returns queries for the top 10 pages in trending or popular
 * Allow user input for different tags and certifications	
 * Implement form to allow user input and search for tags
+* Display return queries on webpage
 
 ================
 Next steps:
-* Sort results if more than 1 certification is selected
-* Display return queries on webpage 
+* Dictionary must display all values instead of just one
+* Sort results if more than 1 certification is selected 
 * Improve UI 
 
 

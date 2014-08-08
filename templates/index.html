@@ -31,17 +31,16 @@
         Gem <input type="checkbox" name="certification" value="gem"><br />
         <input type="submit" value="Submit">
         </form>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                Results: 
-                <pre>
-                    {% for message in messages %}
-{{message}}
-                    {% endfor %}
-                </pre>
-            {% endif %}
-        {% endwith %}
-
+        <table>
+        {% if mix_dictionary %}
+        {% for key, value in mix_dictionary.iteritems() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+        </table>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
