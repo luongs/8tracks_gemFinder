@@ -36,8 +36,13 @@
             {% for node in dictionary_list %}
                 {% for key, value in node.iteritems() %}
                     <tr>
-                        <td>{{ key }}</td>
-                        <td>{{ value }}</td>
+                        {% if key == 'path' %}
+                            <td>{{ key }}</td>
+                            <td><a href={{ "http://8tracks.com"+value }} target="_blank">{{ "8tracks.com"+value }}</a></td>
+                        {% else %}
+                            <td>{{ key }}</td>
+                            <td>{{ value }}</td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             {% endfor %}

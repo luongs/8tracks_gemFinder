@@ -12,6 +12,7 @@ app.config.update(dict(
 @app.route('/', methods=['GET','POST'])
 def show_index():
 	result = None
+	dictionary_list = []	
 	# give choice to search through popular or trending		
 	if request.method == 'POST':
 		# get input request
