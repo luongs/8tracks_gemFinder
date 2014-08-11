@@ -23,7 +23,12 @@
         <h4 style> Enter tags </h4> 
         <h5 style> Add '+' to add multiple tags</h5>
         <form action='/' method="POST">
-        <input name="queryBox" id="queryBox" placeholder="eg: korean + instrumental" value="korean"> </input><br/>
+        {% if session['query'] %}
+        <input name="queryBox" id="queryBox" placeholder="eg: korean + instrumental" value={{session['query'] | e}}> </input><br/>
+        {% else %}
+        <input name="queryBox" id="queryBox" placeholder="eg: korean + instrumental" value=""> </input><br/>
+        {% endif %}
+
         <h4 style> Certification </h4>
         Diamond <input type="checkbox" name="certification" value="diamond"><br />
         Platinum <input type="checkbox" name="certification" value="platinum" checked><br />

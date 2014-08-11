@@ -13,17 +13,23 @@ app.config.update(dict(
 def show_index():
 	result = None
 	dictionary_list = []
+	gemList_query = []
+	tags_query = ''
 	# give choice to search through popular or trending		
 	if request.method == 'POST':
+		# update input boxes with latest data
+		session.clear()
 		# get input request
 		gemList_query = request.form.getlist('certification')
 		tags_query = request.form['queryBox']
+		session['gem'] = gemList_query
+		session['query'] = tags_query
 		dictionary_list = search_mix(tags_query,gemList_query)
-	return render_template('index.html', dictionary_list = dictionary_list)
+	return render_template('index.html', dictionary_list = dictionary_list, session = session)
 
 def search_mix(tags_query,gemList_query): 
+	dictionary_list =[]
 	if tags_query and gemList_query:
-		dictionary_list =[]
 		api = 'api_key'
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
 		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
@@ -45,14 +51,18 @@ def search_mix(tags_query,gemList_query):
 			for gem in gemList_query:	
 				for results in json_result['mix_set']['mixes']:
 					if (results['certification']==gem):
-						# Create new dictionary entry in list 
 						mix_dictionary = {}
+						#print "Mix name: "+results['name']
+						#print "Likes count: "+str(results['likes_count'])
+						#print "Certification: "+results['certification']
+						#print "8tracks path: "+results['path']
+						#print "# requests left: "+r.headers['x-requests-left']
+						#print "Page found: "+str(i)
 						mix_dictionary['name'] = results['name']
 						mix_dictionary['likes_count'] = results['likes_count']
 						mix_dictionary['certification'] = results['certification']
 						mix_dictionary['path'] = results['path']
 						dictionary_list.append(mix_dictionary)
-						print dictionary_list
 	return dictionary_list
 
 if __name__ == '__main__':

@@ -4,8 +4,17 @@
 The 8tracks gem finder interacts with 8tracks' API in order to pull gem certified 
 mixes. Written in python using the Flask framework.  
 
+================
+Next steps:
+* Optimize code, returning results is too slow
+* Sort results if more than 1 certification is selected 
+* Improve UI 
+	* Better table
+	* Sort table as pictures side by side
+	* Limit number of entries/page
+
 ================ 
-Progress: 
+Completed: 
 
 * The 8tracks API is successfully queried for mixes and prints out the top 10 return queries
   for specific mix types
@@ -15,13 +24,12 @@ Progress:
 * Implement form to allow user input and search for tags
 * Display return queries on webpage
 * Dictionary must display all values instead of just one
+* Sessions have been enabled
 
 ================
-Next steps:
-* Optimize code, returning results is too slow
-* Sort results if more than 1 certification is selected 
-* Improve UI 
-
+To consider: 
+* Minor Bug: adding spaces disables session save
+* Create better secret key
 
 ================
 Future features: 
