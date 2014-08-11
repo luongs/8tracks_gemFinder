@@ -18,7 +18,7 @@ Progress:
 
 ================
 Next steps:
-* [Bug]: values displayed are repeats
+* Optimize code, returning results is too slow
 * Sort results if more than 1 certification is selected 
 * Improve UI 
 
