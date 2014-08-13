@@ -32,7 +32,6 @@ def search_mix(tags_query,gemList_query):
 	if tags_query and gemList_query:
 		api = 'api_key'
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
-		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
 		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
 		tags_query = tags_query.lower()
 		for i in range(1,10):
@@ -47,17 +46,10 @@ def search_mix(tags_query,gemList_query):
 			elif(int(r.headers['x-requests-left'])<20):
 				print("Aborting calls, not enough API requests left") 
 				break
-			#print(r.text)
 			for gem in gemList_query:	
 				for results in json_result['mix_set']['mixes']:
 					if (results['certification']==gem):
 						mix_dictionary = {}
-						#print "Mix name: "+results['name']
-						#print "Likes count: "+str(results['likes_count'])
-						#print "Certification: "+results['certification']
-						#print "8tracks path: "+results['path']
-						#print "# requests left: "+r.headers['x-requests-left']
-						#print "Page found: "+str(i)
 						mix_dictionary['name'] = results['name']
 						mix_dictionary['likes_count'] = results['likes_count']
 						mix_dictionary['certification'] = results['certification']
