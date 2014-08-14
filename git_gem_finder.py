@@ -23,8 +23,10 @@ def show_index():
 		gemList_query = request.form.getlist('certification')
 		tags_query = request.form['queryBox']
 		session['gem'] = gemList_query
-		session['query'] = tags_query
+		session['query'] = tags_query.lower().replace(" ","")		# returns format that can be displayed on session
+		t0 = time.time()
 		dictionary_list = search_mix(tags_query,gemList_query)
+		print str(time.time() - t0)
 	return render_template('index.html', dictionary_list = dictionary_list, session = session)
 
 def search_mix(tags_query,gemList_query): 
@@ -32,8 +34,10 @@ def search_mix(tags_query,gemList_query):
 	if tags_query and gemList_query:
 		api = 'api_key'
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
+		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
 		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
 		tags_query = tags_query.lower()
+
 		for i in range(1,10):
 			mix_url = "http://8tracks.com/mix_sets/tags:"+tags_query+\
 						":popular.json?include=mixes[likes_count]&page="+str(i)+\

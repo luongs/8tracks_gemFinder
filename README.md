@@ -6,7 +6,6 @@ mixes. Written in python using the Flask framework.
 
 ================
 Next steps:
-* Optimize code, returning results is too slow
 * Sort results if more than 1 certification is selected 
 * Improve UI 
 	* Better table
@@ -25,6 +24,7 @@ Completed:
 * Display return queries on webpage
 * Dictionary must display all values instead of just one
 * Sessions have been enabled for query input text and check boxes
+* Optimize code (testing yielded similar results between n^3 and n^2 loops since n is still small)
 
 ================
 To consider: 
