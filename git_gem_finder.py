@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-import requests, json, pprint, urllib2, time
+import requests, json, pprint, urllib2, time, operator
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -24,10 +24,10 @@ def show_index():
 		tags_query = request.form['queryBox']
 		session['gem'] = gemList_query
 		session['query'] = tags_query.lower().replace(" ","")		# returns format that can be displayed on session
-		t0 = time.time()
 		dictionary_list = search_mix(tags_query,gemList_query)
-		print str(time.time() - t0)
-	return render_template('index.html', dictionary_list = dictionary_list, session = session)
+		# sorts dictionary in terms of gem value
+		sorted_dictionary_list = sorted(dictionary_list, key = operator.itemgetter('priority'))
+	return render_template('index.html', dictionary_list = sorted_dictionary_list, session = session)
 
 def search_mix(tags_query,gemList_query): 
 	dictionary_list =[]
@@ -58,6 +58,15 @@ def search_mix(tags_query,gemList_query):
 						mix_dictionary['likes_count'] = results['likes_count']
 						mix_dictionary['certification'] = results['certification']
 						mix_dictionary['path'] = results['path']
+						# priority is used for sorting dictionary in terms of gem value
+						if (gem == 'diamond'):
+							mix_dictionary['priority'] = 0
+						elif (gem == 'platinum'):
+							mix_dictionary['priority'] = 1
+						elif (gem == 'gold'):
+							mix_dictionary['priority'] = 2
+						else: 
+							mix_dictionary['priority'] = 3
 						dictionary_list.append(mix_dictionary)
 	return dictionary_list
 
