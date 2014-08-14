@@ -17,7 +17,6 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-
         <!-- Add your site or application content here -->
         <h2 style> 8 Tracks Gem Finder </h2>
         <h4 style> Enter tags </h4> 
@@ -30,10 +29,60 @@
         {% endif %}
 
         <h4 style> Certification </h4>
-        Diamond <input type="checkbox" name="certification" value="diamond"><br />
-        Platinum <input type="checkbox" name="certification" value="platinum" checked><br />
-        Gold <input type="checkbox" name="certification" value="gold"><br />
-        Gem <input type="checkbox" name="certification" value="gem"><br />
+        {% if session['gem'] %}
+            {% set diamond = [] %}
+            {% set platinum = [] %}
+            {% set gold = [] %}
+            {% set gem = [] %}
+            
+            {# Checks session value saving of certification checkboxes #}
+            {% for value in session['gem'] %}
+                {% if value == 'diamond' %}
+                    {% if diamond.append(1) %}
+                    {% endif %}
+                {% endif %}
+                {% if value == 'platinum' %}
+                    {% if platinum.append(1) %}
+                    {% endif %}
+                {% endif %}
+                {% if value == 'gold' %}
+                    {% if gold.append(1) %}
+                    {% endif %}
+                {% endif %}
+                {% if value == 'gem' %}
+                    {% if gem.append(1) %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {# Sets checkboxes depending on users choice#}
+            {% if not diamond %}
+                Diamond <input type="checkbox" name="certification" value="diamond"><br />
+            {% else %}
+                Diamond <input type="checkbox" name="certification" value="diamond" checked><br />
+            {% endif %}
+            {% if not platinum %}
+                Platinum <input type="checkbox" name="certification" value="platinum"><br />
+            {% else %}
+                 Platinum <input type="checkbox" name="certification" value="platinum" checked><br />
+            {% endif %}
+            {% if not gold %}
+                Gold <input type="checkbox" name="certification" value="gold"><br />
+            {% else %}
+                    Gold <input type="checkbox" name="certification" value="gold" checked><br />                
+            {% endif %}
+            {% if not gem %}
+                 Gem <input type="checkbox" name="certification" value="gem"><br />
+            {% else %}
+                Gem <input type="checkbox" name="certification" value="gem" checked><br />
+            {% endif %}
+
+        {% else %}
+            Diamond <input type="checkbox" name="certification" value="diamond"><br />
+            Platinum <input type="checkbox" name="certification" value="platinum" checked><br />
+            Gold <input type="checkbox" name="certification" value="gold"><br />
+            Gem <input type="checkbox" name="certification" value="gem"><br />
+        {% endif %}
         <input type="submit" value="Submit">
         </form>
         <table>

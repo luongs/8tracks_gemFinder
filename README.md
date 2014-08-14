@@ -24,7 +24,7 @@ Completed:
 * Implement form to allow user input and search for tags
 * Display return queries on webpage
 * Dictionary must display all values instead of just one
-* Sessions have been enabled
+* Sessions have been enabled for query input text and check boxes
 
 ================
 To consider: 
