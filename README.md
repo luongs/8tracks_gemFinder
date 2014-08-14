@@ -37,3 +37,4 @@ Future features:
 * Play mixes from the website
 	* Enable forwarding
 * Log in to your account and add mixes directly
+* AJAX autocomplete for input boxes

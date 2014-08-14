@@ -27,7 +27,7 @@ def show_index():
 		session['query'] = tags_query.lower().replace(" ","")		# returns format that can be displayed on session
 		dictionary_list = search_mix(tags_query,gemList_query)
 		# sorts dictionary in terms of gem value
-		sorted_dictionary_list = sorted(dictionary_list, key = operator.itemgetter('priority'))
+		sorted_dictionary_list = sorted(dictionary_list, key = operator.itemgetter('likes_count'), reverse = True)
 	return render_template('index.html', dictionary_list = sorted_dictionary_list, session = session)
 
 def search_mix(tags_query,gemList_query): 
@@ -59,15 +59,6 @@ def search_mix(tags_query,gemList_query):
 						mix_dictionary['likes_count'] = results['likes_count']
 						mix_dictionary['certification'] = results['certification']
 						mix_dictionary['path'] = results['path']
-						# priority is used for sorting dictionary in terms of gem value
-						if (gem == 'diamond'):
-							mix_dictionary['priority'] = 0
-						elif (gem == 'platinum'):
-							mix_dictionary['priority'] = 1
-						elif (gem == 'gold'):
-							mix_dictionary['priority'] = 2
-						else: 
-							mix_dictionary['priority'] = 3
 						dictionary_list.append(mix_dictionary)
 	return dictionary_list
 
