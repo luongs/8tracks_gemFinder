@@ -3,6 +3,7 @@ import requests, json, pprint, urllib2, time, operator
 
 app = Flask(__name__)
 app.config.from_object(__name__)
+app.jinja_env.add_extension("jinja2.ext.loopcontrols")
 
 app.config.update(dict(
 	DEBUG = True,
