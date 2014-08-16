@@ -14,6 +14,7 @@ app.config.update(dict(
 def show_index():
 	result = None
 	dictionary_list = []
+	sorted_dictionary_list = []
 	gemList_query = []
 	tags_query = ''
 	# give choice to search through popular or trending		
