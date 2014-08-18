@@ -9,8 +9,11 @@ Next steps:
 * How to display mix pictures?
 * Improve UI 
 	* Better table
-	* Sort table as pictures side by side
+		* Have entries side by side 
+		* Max 5 entries/row
+	* Sort table as pictures
 	* Limit number of entries/page
+		* Therefore have automatic pagination
 
 ================ 
 Completed: 
