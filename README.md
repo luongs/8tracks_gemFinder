@@ -6,6 +6,7 @@ mixes. Written in python using the Flask framework.
 
 ================
 Next steps:
+* How to display mix pictures?
 * Improve UI 
 	* Better table
 	* Sort table as pictures side by side

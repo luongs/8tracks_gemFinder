@@ -14,15 +14,35 @@ html,
 button,
 input,
 select,
+
 textarea {
     color: #222;
 }
 
 html {
-    font-size: 1em;
     line-height: 1.4;
     text-align: center;
+    font-size: small;
+    font-family: 'Source Sans Pro', sans-serif; 
+    background-color: #CACABC
 }
+
+#left_nav {
+    position: fixed;
+    top:0;
+    left: 0; 
+    width: 15%;
+}
+
+#mid_nav {
+    margin-left: 30%
+}
+
+.result_table{
+    margin-top: 15%;
+}
+
+h2 { color: #377ba8; }
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i

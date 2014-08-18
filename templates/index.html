@@ -10,17 +10,15 @@
         <meta name="description" content="Looks up gem certified mixes within 8tracks using the site's API">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/main.css')}}">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-        <!-- Add your site or application content here -->
-        <h2 style> 8 Tracks Gem Finder </h2>
-        <h4 style> Enter tags </h4> 
-        <h5 style> Add '+' to add multiple tags</h5>
+        <div id="left_nav">
+        <h2> 8 Tracks Gem Finder </h2>
+        <h4> Enter tags </h4> 
+        <h5> Add '+' to add multiple tags</h5>
         <form action='/' method="POST">
         {% if session['query'] %}
         <input name="queryBox" id="queryBox" placeholder="eg: korean + instrumental" value={{session['query'] | e}}> </input><br/>
@@ -85,7 +83,9 @@
         {% endif %}
         <input type="submit" value="Submit">
         </form>
-        <table>
+    </div>
+    <div id="mid_nav">
+        <table class="result_table">
         {% if dictionary_list %}
             {% for node in dictionary_list %}
                 {% for key, value in node.iteritems() %}
@@ -102,6 +102,7 @@
             {% endfor %}
         {% endif %}
         </table>
+    </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
