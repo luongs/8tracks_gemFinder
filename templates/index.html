@@ -89,15 +89,16 @@
         {% if dictionary_list %}
             {% for node in dictionary_list %}
                 {% for key, value in node.iteritems() %}
-                    <tr>
-                        {% if key == 'path' %}
-                            <td>{{ key }}</td>
-                            <td><a href={{ "http://8tracks.com"+value }} target="_blank">{{ "8tracks.com"+value }}</a></td>
+                    <tr style={padding:5px}>
+                        {% if key == 'image' %}
+                            <td><img src={{ value }} alt="mix_cover"></td>
+                        {% elif key == 'path' %}
+                            <td><a href={{ "http://8tracks.com"+value }} target="_blank">Link</a></td>
                         {% else %}
-                            <td>{{ key }}</td>
+                            <th>{{ key }}</td>
                             <td>{{ value }}</td>
                         {% endif %}
-                    </tr>
+                    </tr>    
                 {% endfor %}
             {% endfor %}
         {% endif %}

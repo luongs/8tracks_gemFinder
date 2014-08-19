@@ -27,6 +27,10 @@ html {
     background-color: #CACABC
 }
 
+th {
+    padding-bottom: 3px;
+}
+
 #left_nav {
     position: fixed;
     top:0;
