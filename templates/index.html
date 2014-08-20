@@ -12,7 +12,20 @@
 
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/main.css')}}">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <link href="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/jquery-ui.css')}}" rel="stylesheet">
+        <script src="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/external/jquery/jquery.js')}}"></script>
+        <script src="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/jquery-ui.js')}}"></script>
+        <script>
+            $(function() {
+                $( "#gem_checkbox").buttonset();
+            });
+        </script>
+        <script>
+          $(function() {
+            $( "input[type=submit], a, button" )
+              .button()
+          });
+        </script>
     </head>
     <body>
         <div id="left_nav">
@@ -26,7 +39,8 @@
         <input name="queryBox" id="queryBox" placeholder="eg: korean + instrumental" value=""> </input><br/>
         {% endif %}
 
-        <h4 style> Certification </h4>
+        <h4 style> Select Certification </h4>
+        <div id="gem_checkbox">
         {% if session['gem'] %}
             {% set diamond = [] %}
             {% set platinum = [] %}
@@ -55,33 +69,35 @@
 
             {# Sets checkboxes depending on users choice#}
             {% if not diamond %}
-                Diamond <input type="checkbox" name="certification" value="diamond"><br />
+                <input type="checkbox" name="certification" value="diamond" id="diamond"><label for="diamond">Diamond</label><br />
             {% else %}
-                Diamond <input type="checkbox" name="certification" value="diamond" checked><br />
+                <input type="checkbox" name="certification" value="diamond" id="diamond" checked><label for="diamond">Diamond</label><br />
             {% endif %}
             {% if not platinum %}
-                Platinum <input type="checkbox" name="certification" value="platinum"><br />
+                <input type="checkbox" name="certification" value="platinum" id="platinum"><label for="platinum">Platinum</label><br />
             {% else %}
-                 Platinum <input type="checkbox" name="certification" value="platinum" checked><br />
+                 <input type="checkbox" name="certification" value="platinum" id="platinum" checked><label for="platinum">Platinum</label><br />
             {% endif %}
             {% if not gold %}
-                Gold <input type="checkbox" name="certification" value="gold"><br />
+                <input type="checkbox" name="certification" value="gold" id="gold"><label for="gold">Gold   </label><br />
             {% else %}
-                    Gold <input type="checkbox" name="certification" value="gold" checked><br />                
+                <input type="checkbox" name="certification" value="gold" id="gold" checked><label for="gold">Gold   </label><br />          
             {% endif %}
             {% if not gem %}
-                 Gem <input type="checkbox" name="certification" value="gem"><br />
+                <input type="checkbox" name="certification" value="gem" id="gem"><label for="gem">Gem   </label><br />
             {% else %}
-                Gem <input type="checkbox" name="certification" value="gem" checked><br />
+                <input type="checkbox" name="certification" value="gem" id="gem" checked><label for="gem">Gem   </label><br />
             {% endif %}
 
         {% else %}
-            Diamond <input type="checkbox" name="certification" value="diamond"><br />
-            Platinum <input type="checkbox" name="certification" value="platinum" checked><br />
-            Gold <input type="checkbox" name="certification" value="gold"><br />
-            Gem <input type="checkbox" name="certification" value="gem"><br />
+            <input type="checkbox" name="certification" value="diamond" id="diamond"><label for="diamond">Diamond</label><br />
+            <input type="checkbox" name="certification" value="platinum" id="platinum" checked><label for="platinum">Platinum</label><br />
+            <input type="checkbox" name="certification" value="gold" id="gold"><label for="gold">Gold</label><br />
+            <input type="checkbox" name="certification" value="gem" id="gem"><label for="gem">Gem</label><br />
         {% endif %}
-        <input type="submit" value="Submit">
+        <br />
+        </div>
+        <input type="submit" value="Go!">
         </form>
     </div>
     <div id="mid_nav">
@@ -89,10 +105,12 @@
         {% if dictionary_list %}
             {% for node in dictionary_list %}
                 {% for key, value in node.iteritems() %}
-                    <tr style={padding:5px}>
+                    <tr style="margin: 5px;">
                         {% if key == 'image' %}
+                            <td></td>
                             <td><img src={{ value }} alt="mix_cover"></td>
                         {% elif key == 'path' %}
+                            <td></td>
                             <td><a href={{ "http://8tracks.com"+value }} target="_blank">Link</a></td>
                         {% else %}
                             <th>{{ key }}</td>
@@ -104,11 +122,7 @@
         {% endif %}
         </table>
     </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-
+        
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

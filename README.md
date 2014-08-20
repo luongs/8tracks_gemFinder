@@ -6,14 +6,15 @@ mixes. Written in python using the Flask framework.
 
 ================
 Next steps:
-* How to display mix pictures?
+
 * Improve UI 
 	* Better table
 		* Have entries side by side 
 		* Max 5 entries/row
-	* Sort table as pictures
 	* Limit number of entries/page
 		* Therefore have automatic pagination
+* Bug 
+	* Get image to show up before link
 
 ================ 
 Completed: 
@@ -29,6 +30,7 @@ Completed:
 * Sessions have been enabled for query input text and check boxes
 * Optimize code (testing yielded similar results between n^3 and n^2 loops since n is still small)
 * Sort results by gem level if more than 1 certification is selected 
+* Display mix pictures 
 
 ================
 To consider: 
