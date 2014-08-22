@@ -24,12 +24,17 @@ html {
     text-align: center;
     font-size: small;
     font-family: 'Source Sans Pro', sans-serif; 
-    background-color: #CACABC
+    background-color: #CACABC;
 }
 
 h3 {
     text-align: center;
 }
+
+input {
+    font-family: 'Source Sans Pro', sans-serif; 
+}
+
 table, tr {
     margin: 30px;
     padding: 30px;
