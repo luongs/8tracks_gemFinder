@@ -4,7 +4,6 @@ Flask-WTF==0.9.5
 Jinja2==2.7.2
 Mako==0.7.1
 MarkupSafe==0.15
-PAM==0.4.2
 PIL==1.1.7
 Routes==1.13
 Twisted-Core==12.2.0
