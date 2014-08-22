@@ -13,20 +13,19 @@
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/main.css')}}">
         <link href="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/jquery-ui.css')}}" rel="stylesheet">
+        <link href="{{ url_for('static', filename = 'FooTable-2/css/footable.core.css')}}" rel="stylesheet" type="text/css" />
         <script src="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/external/jquery/jquery.js')}}"></script>
         <script src="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/jquery-ui.js')}}"></script>
         <script>
             $(function() {
                 $( "#gem_checkbox").buttonset();
             });
+
+            $(function() {
+                $( "input[type=submit], a, button" )
+                  .button()
+            });
         </script>
-        <script>
-          $(function() {
-            $( "input[type=submit], a, button" )
-              .button()
-          });
-        </script>
-    </head>
     <body>
         <div id="left_nav">
         <h2> 8 Tracks Gem Finder </h2>
@@ -101,23 +100,21 @@
         </form>
     </div>
     <div id="mid_nav">
-        <h3> Find mixes by certification levels !</h3>
-        <table class="result_table">
+        <table class="result_table" >
         {% if dictionary_list %}
             {% for node in dictionary_list %}
                 {% for key, value in node.iteritems() %}
-                    <tr style="margin: 5px;">
                         {% if key == 'image' %}
-                            <td></td>
                             <td><img src={{ value }} alt="mix_cover"></td>
                         {% elif key == 'path' %}
-                            <td></td>
                             <td><a href={{ "http://8tracks.com"+value }} target="_blank">Link</a></td>
                         {% else %}
+                            <tr>
                             <th>{{ key }}</td>
                             <td>{{ value }}</td>
+                           
+                            </tr>
                         {% endif %}
-                    </tr>    
                 {% endfor %}
             {% endfor %}
         {% endif %}
