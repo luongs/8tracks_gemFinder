@@ -33,8 +33,7 @@ Completed:
 * Display mix pictures 
 
 ================
-To consider: 
-* Minor Bug: adding spaces disables session save
+To consider:
 * Create better secret key
 
 ================

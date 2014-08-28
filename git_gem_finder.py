@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-import requests, json, pprint, urllib2, time, operator
+import requests, json, operator
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -25,7 +25,7 @@ def show_index():
 		gemList_query = request.form.getlist('certification')
 		tags_query = request.form['queryBox']
 		session['gem'] = gemList_query
-		session['query'] = tags_query.lower().replace(" ","")		# returns format that can be displayed on session
+		session['query'] = tags_query.lower().replace(" ","_")		# returns format that can be displayed on session
 		dictionary_list = search_mix(tags_query,gemList_query)
 		# sorts dictionary in terms of gem value
 		sorted_dictionary_list = sorted(dictionary_list, key = operator.itemgetter('likes_count'), reverse = True)
@@ -38,8 +38,9 @@ def search_mix(tags_query,gemList_query):
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
 		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
 		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
-		tags_query = tags_query.lower()
-
+		# 8tracks API only accepts space as underscores 
+		tags_query = tags_query.lower().replace(" ","_")
+		
 		for i in range(1,10):
 			mix_url = "http://8tracks.com/mix_sets/tags:"+tags_query+\
 						":popular.json?include=mixes[likes_count]&page="+str(i)+\
@@ -56,12 +57,14 @@ def search_mix(tags_query,gemList_query):
 				for results in json_result['mix_set']['mixes']:
 					if (results['certification']==gem):
 						mix_dictionary = {}
-						
-						mix_dictionary['path'] = results['path']
-						mix_dictionary['name'] = results['name']
-						mix_dictionary['certification'] = results['certification']
-						mix_dictionary['likes_count'] = results['likes_count']
 						mix_dictionary['image'] = results['cover_urls']['sq133']
+						mix_dictionary['path'] = results['path']
+						
+						mix_dictionary['likes_count'] = results['likes_count']
+						mix_dictionary['certification'] = results['certification']
+						mix_dictionary['name'] = results['name']
+
+						
 						dictionary_list.append(mix_dictionary)
 	return dictionary_list
 
