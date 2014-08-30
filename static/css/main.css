@@ -24,7 +24,7 @@ html {
     text-align: center;
     font-size: small;
     font-family: 'Source Sans Pro', sans-serif;
-    background-color: #CACABC; 
+    background-color: #F0F2F5;
 }
 
 h3 {
@@ -38,7 +38,7 @@ input {
 table, tr {
     margin: 30px;
     padding: 30px;
-    border:2px solid black;
+    border:2px solid gray;
     border-collapse:collapse;
 }
 
