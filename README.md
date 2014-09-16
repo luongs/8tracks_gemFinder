@@ -32,6 +32,7 @@ Completed:
 * Optimize code (testing yielded similar results between n^3 and n^2 loops since n is still small)
 * Sort results by gem level if more than 1 certification is selected 
 * Display mix pictures 
+* App is deployed on Heroku
 
 ================
 To consider:
