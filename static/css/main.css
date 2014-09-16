@@ -46,6 +46,10 @@ td {
     margin-right: 1px;
 }
 
+#main_message {
+    margin:30px;
+}
+
 #left_nav {
     position: fixed;
     top:0;

@@ -13,6 +13,7 @@ Next steps:
 		* Max 5 entries/row
 	* Limit number of entries/page
 		* Therefore have automatic pagination
+	* Create a secure and random secret key
 * Bug 
 	* Get image to show up before link
 
