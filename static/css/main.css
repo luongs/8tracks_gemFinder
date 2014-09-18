@@ -36,14 +36,21 @@ input {
 }
 
 table, tr {
-    margin: 30px;
+    
+    /*margin: 30px; */
     padding: 30px;
     border:2px solid gray;
     border-collapse:collapse;
+    table-layout: fixed;
+}
+
+th {
+    width:100px;
 }
 
 td {
     margin-right: 1px;
+    width:100px;
 }
 
 #main_message {
@@ -62,7 +69,7 @@ td {
 }
 
 .result_table{
-    margin-top: 15%;
+    margin-top: 1%;
 }
 
 h2 { color: #377ba8; }

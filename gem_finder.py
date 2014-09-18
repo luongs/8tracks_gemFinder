@@ -32,7 +32,7 @@ def show_index():
 	return render_template('index.html', dictionary_list = sorted_dictionary_list, session = session)
 
 def search_mix(tags_query,gemList_query): 
-	dictionary_list =[]
+	dictionary_list = []
 	if tags_query and gemList_query:
 		api = '141f1c7de6224ddbee8e7f26dd44fc389d4f96dc'
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'

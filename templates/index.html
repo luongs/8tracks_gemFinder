@@ -100,25 +100,32 @@
         </form>
     </div>
     <div id="mid_nav">
-        <table class="result_table" >
+        
         {% if dictionary_list %}
             {% for node in dictionary_list %}
+                <table class="result_table" >
                 {% for key, value in node.iteritems() %}
                         {% if key == 'image' %}
+			                <tr>
                             <td><img src={{ value }} alt="mix_cover"></td>
+                            <td></td>
+                            </tr>
                         {% elif key == 'path' %}
+                            <tr>             
                             <td><a href={{ "http://8tracks.com"+value }} target="_blank">Link</a></td>
+                            <td></td>
+                        </tr>
                         {% else %}
                             <tr>
                             <th>{{ key }}</td>
                             <td>{{ value }}</td>
-                           
                             </tr>
                         {% endif %}
                 {% endfor %}
+                </table>
             {% endfor %}
         {% endif %}
-        </table>
+        
     </div>
         
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

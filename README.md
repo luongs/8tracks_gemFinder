@@ -16,6 +16,7 @@ Next steps:
 	* Create a secure and random secret key
 * Bug 
 	* Get image to show up before link
+* Remove secret key and api key from github commited file
 
 ================ 
 Completed: 
