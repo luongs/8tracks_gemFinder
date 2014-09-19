@@ -22,7 +22,7 @@ textarea {
 html {
     line-height: 1.4;
     text-align: center;
-    font-size: small;
+    font-size: medium;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #F0F2F5;
 }
@@ -45,16 +45,14 @@ table, tr {
 }
 
 th {
-    width:100px;
+    font-size: medium;
+    width:150px;
 }
 
 td {
+    font-size: medium;
     margin-right: 1px;
-    width:100px;
-}
-
-#main_message {
-    margin:30px;
+    width:125px;
 }
 
 #left_nav {
@@ -70,6 +68,22 @@ td {
 
 .result_table{
     margin-top: 2%;
+}
+
+.mid_nav_img{
+    display: block;
+    margin-left: 50%;
+}
+
+.mid_nav_path{
+    display:block;
+    margin-left: 50%;
+}
+
+.mid_nav_message{
+    text-align: left;
+    margin-left: 30px;
+    padding: 3%;
 }
 
 h2 { color: #377ba8; }

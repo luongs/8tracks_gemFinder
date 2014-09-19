@@ -107,12 +107,12 @@
                 {% for key, value in node.iteritems() %}
                         {% if key == 'image' %}
 			                <tr>
-                            <td><img src={{ value }} alt="mix_cover"></td>
+                            <td class="mid_nav_img"><img src={{ value }} alt="mix_cover"></td>
                             <td></td>
                             </tr>
                         {% elif key == 'path' %}
                             <tr>             
-                            <td><a href={{ "http://8tracks.com"+value }} target="_blank">Link</a></td>
+                            <td class="mid_nav_path"><a href={{ "http://8tracks.com"+value }} target="_blank">Link</a></td>
                             <td></td>
                         </tr>
                         {% else %}
@@ -124,6 +124,8 @@
                 {% endfor %}
                 </table>
             {% endfor %}
+        {% else %}
+            <h3 class="mid_nav_message">Find popular mixes</h3>
         {% endif %}
         
     </div>
