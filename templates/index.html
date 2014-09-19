@@ -10,7 +10,7 @@
         <meta name="description" content="Looks up gem certified mixes within 8tracks using the site's API">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans|Droid+Serif:700italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/main.css')}}">
         <link href="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/jquery-ui.css')}}" rel="stylesheet">
         <link href="{{ url_for('static', filename = 'FooTable-2/css/footable.core.css')}}" rel="stylesheet" type="text/css" />
@@ -28,7 +28,8 @@
         </script>
     <body>
         <div id="left_nav">
-        <h2> 8 Tracks Gem Finder </h2>
+        <h2> 8 Tracks </h2>
+        <h2> Gem Finder </h2>
         <h4> Enter tags </h4> 
         <h5> Add '+' to add multiple tags</h5>
         <form action='/' method="POST">
@@ -115,6 +116,11 @@
                             <td class="mid_nav_path"><a href={{ "http://8tracks.com"+value }} target="_blank">Link</a></td>
                             <td></td>
                         </tr>
+                        {% elif key == 'likes_count' %}
+                        <tr>
+                            <th>likes count</th>
+                            <td>{{ value }}</td>
+                        </tr>
                         {% else %}
                             <tr>
                             <th>{{ key }}</td>
@@ -125,7 +131,10 @@
                 </table>
             {% endfor %}
         {% else %}
-            <h3 class="mid_nav_message">Find popular mixes</h3>
+            <h3 class="mid_nav_message">Dig up popular mixes, works best with unique and interesting tags!</h3>
+            <h4 class="mid_nav_message2">For example: british+chill (platinum) </h4>
+            <h4 class="mid_nav_message2">Or: work (platinum) </h4>
+
         {% endif %}
         
     </div>

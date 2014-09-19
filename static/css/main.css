@@ -23,10 +23,14 @@ html {
     line-height: 1.4;
     text-align: center;
     font-size: medium;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'PT Sans', sans-serif;
     background-color: #F0F2F5;
 }
 
+h2{
+    font-family: 'Droid Serif', serif;
+    color: #000F1F;
+}
 h3 {
     text-align: center;
 }
@@ -45,14 +49,14 @@ table, tr {
 }
 
 th {
-    font-size: medium;
+    font-size: small;
     width:150px;
 }
 
 td {
-    font-size: medium;
+    font-size: small;
     margin-right: 1px;
-    width:125px;
+    width:100px;
 }
 
 #left_nav {
@@ -72,7 +76,7 @@ td {
 
 .mid_nav_img{
     display: block;
-    margin-left: 50%;
+    margin-left: 40%;
 }
 
 .mid_nav_path{
@@ -83,10 +87,15 @@ td {
 .mid_nav_message{
     text-align: left;
     margin-left: 30px;
-    padding: 3%;
+    padding-top: 3%;
+    font-size: large;
 }
 
-h2 { color: #377ba8; }
+.mid_nav_message2{
+    text-align: left;
+    margin-left: 45px;
+    font-size: large;
+}
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
