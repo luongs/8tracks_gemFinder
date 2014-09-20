@@ -7,14 +7,17 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>8tracks Gem Finder</title>
-        <meta name="description" content="Looks up gem certified mixes within 8tracks using the site's API">
+        <meta name="description" content="Digs up gem certified mixes within 8tracks so you don't have to">
+        <meta name="keywords" content="8tracks, certification, top, popular, mix, platinum, diamond, gold, gem">
+        <meta name="author" content="Sebastien Luong">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link href='http://fonts.googleapis.com/css?family=PT+Sans|Lobster' rel='stylesheet' type='text/css'>
         <!-- css for tablet and half desktop screen size -->
         <link rel="stylesheet" media="screen and (min-width:500px)" type=text/css href="{{ url_for('static', filename='css/small.css')}}">
         <!-- css for full screen size -->
         <link rel="stylesheet" media="screen and (min-width:1000px)" type=text/css href="{{ url_for('static', filename='css/main.css')}}">
+        <!-- fonts taken from google fonts --> 
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans|Lobster' rel='stylesheet' type='text/css'>
+        <!-- jQuery plugins -->
         <link href="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/jquery-ui.css')}}" rel="stylesheet">
         <link href="{{ url_for('static', filename = 'FooTable-2/css/footable.core.css')}}" rel="stylesheet" type="text/css" />
         <script src="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/external/jquery/jquery.js')}}"></script>
@@ -49,6 +52,7 @@
             <h4 style> Select Certification </h4>
         </div>
         <div id="gem_checkbox">
+        <!-- retrieves session value for certifications -->
         {% if session['gem'] %}
             {% set diamond = [] %}
             {% set platinum = [] %}
@@ -75,7 +79,7 @@
                 {% endif %}
             {% endfor %}
 
-            {# Sets checkboxes depending on users choice#}
+            <!-- Sets checkboxes depending on users choice -->
             {% if not diamond %}
                 <input type="checkbox" name="certification" value="diamond" id="diamond"><label for="diamond">Diamond</label><br />
             {% else %}
@@ -109,7 +113,7 @@
         </form>
     </div>
     <div id="mid_nav">
-        
+        <!-- displays resulting mixes  -->
         {% if dictionary_list %}
             {% for node in dictionary_list %}
                 <table class="result_table" >
@@ -139,6 +143,7 @@
                 </table>
             {% endfor %}
         {% else %}
+            <!-- displayed message when no session value is set -->
             <h3 class="mid_nav_message">Dig up popular mixes!</h3>
         {% endif %}
         

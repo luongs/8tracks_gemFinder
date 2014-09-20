@@ -7,15 +7,10 @@ mixes. Written in python using the Flask framework.
 ================
 Next steps:
 
-* Improve UI 
-	* Better table
-		* Have entries side by side 
-		* Max 5 entries/row
-	* Limit number of entries/page
-		* Therefore have automatic pagination
-	* Create a secure and random secret key
-* Bug 
-	* Get image to show up before link
+* Incorporate link inside img src
+* Add arrow to 'Dig up popular mixes'
+* Create an icon 
+* Create a secure and random secret key
 * Remove secret key and api key from github commited file
 
 ================ 
@@ -34,10 +29,6 @@ Completed:
 * Sort results by gem level if more than 1 certification is selected 
 * Display mix pictures 
 * App is deployed on Heroku
-
-================
-To consider:
-* Create better secret key
 
 ================
 Future features: 
