@@ -28,18 +28,23 @@
         </script>
     <body>
         <div id="left_nav">
-        <h2> 8 Tracks </h2>
-        <h2> Gem Finder </h2>
-        <h4> Enter tags </h4> 
-        <h5> Add '+' to add multiple tags</h5>
+        <div id="app_name">
+            <h2> 8tracks </h2>
+            <h2> Gem Finder </h2>
+        </div>
+        <div id="below_app_name">
+            <h5> ENTER TAGS BELOW </h5> 
+        </div>
+            <h5> add '+' to add multiple tags</h5>
         <form action='/' method="POST">
         {% if session['query'] %}
-        <input name="queryBox" id="queryBox" placeholder="eg: korean + instrumental" value={{session['query'] | e}}> </input><br/>
+        <input name="queryBox" id="queryBox" placeholder="eg: british + chill" value={{session['query'] | e}}> </input><br/>
         {% else %}
-        <input name="queryBox" id="queryBox" placeholder="eg: korean + instrumental" value=""> </input><br/>
+        <input name="queryBox" id="queryBox" placeholder="eg: british + chill" value=""> </input><br/>
         {% endif %}
-
-        <h4 style> Select Certification </h4>
+        <div id="select_certification">
+            <h4 style> Select Certification </h4>
+        </div>
         <div id="gem_checkbox">
         {% if session['gem'] %}
             {% set diamond = [] %}
@@ -131,10 +136,7 @@
                 </table>
             {% endfor %}
         {% else %}
-            <h3 class="mid_nav_message">Dig up popular mixes, works best with unique and interesting tags!</h3>
-            <h4 class="mid_nav_message2">For example: british+chill (platinum) </h4>
-            <h4 class="mid_nav_message2">Or: work (platinum) </h4>
-
+            <h3 class="mid_nav_message">Dig up popular mixes!</h3>
         {% endif %}
         
     </div>

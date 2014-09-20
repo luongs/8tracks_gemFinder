@@ -30,9 +30,13 @@ html {
 h2{
     font-family: 'Droid Serif', serif;
     color: #000F1F;
+    margin:0;
 }
 h3 {
     text-align: center;
+}
+h4,h5{
+    margin:0;
 }
 
 input {
@@ -43,7 +47,7 @@ table, tr {
     
     /*margin: 30px; */
     padding: 30px;
-    border:2px solid gray;
+    border:2px solid;
     border-collapse:collapse;
     table-layout: fixed;
 }
@@ -59,15 +63,40 @@ td {
     width:100px;
 }
 
+img {
+    width: 175%; 
+    height:auto;
+}
+
 #left_nav {
     position: fixed;
     top:0;
     left: 0; 
     width: 15%;
+    border: 2px solid;
+    border-bottom: 100%;
+    padding: 30px;
 }
 
 #mid_nav {
-    margin-left: 30%;
+    margin-left: 45%;
+}
+
+#app_name {
+    margin-top: 10%;
+}
+
+#below_app_name{
+    margin-top: 15%;
+}
+
+#queryBox{
+    margin-top: 2%;
+    margin-bottom: 10%;
+}
+
+#select_certification {
+    margin-bottom: 5%;
 }
 
 .result_table{
@@ -76,7 +105,7 @@ td {
 
 .mid_nav_img{
     display: block;
-    margin-left: 40%;
+    margin-left: 28%;
 }
 
 .mid_nav_path{
