@@ -12,6 +12,7 @@ Next steps:
 * Create an icon 
 * Create a secure and random secret key
 * Remove secret key and api key from github commited file
+* Limit on an individual IP's search to prevent DoS
 
 ================ 
 Completed: 
@@ -35,5 +36,6 @@ Future features:
 * Find certified mixes for a user's profile (eg: find all gold mixes published by a user)
 * Play mixes from the website
 	* Enable forwarding
+* Randomize search button
 * Log in to your account and add mixes directly
 * AJAX autocomplete for input boxes
