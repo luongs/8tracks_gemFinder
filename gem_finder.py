@@ -1,8 +1,14 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 import requests, json, operator
 
-app = Flask(__name__)
+app = Flask(__name__, instance_relative_config=True)
+
+# Load the default configuration
 app.config.from_object('config')
+
+#Load the configuration from the instance folder
+app.config.from_pyfile('config.py')
+
 app.jinja_env.add_extension("jinja2.ext.loopcontrols")
 
 
@@ -30,7 +36,7 @@ def show_index():
 def search_mix(tags_query,gemList_query): 
 	dictionary_list = []
 	if tags_query and gemList_query:
-		api = '141f1c7de6224ddbee8e7f26dd44fc389d4f96dc'
+		api = app.config['API_KEY']
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
 		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
 		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
