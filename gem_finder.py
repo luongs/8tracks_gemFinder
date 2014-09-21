@@ -41,7 +41,7 @@ def search_mix(tags_query,gemList_query):
 	dictionary_list = []
 	if tags_query and gemList_query:
 		#api = app.config['API_KEY']
-		api = str(os.getenv('API_KEY'))
+		api = os.environ['API_KEY']
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
 		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
 		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
