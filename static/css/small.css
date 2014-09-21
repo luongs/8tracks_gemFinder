@@ -29,7 +29,7 @@ html {
 
 h1{
     font-family: 'Lobster', cursive;
-    color: #A30000;
+    color: #B43030;
     margin:0;
     font-size: 200%;
 }
@@ -117,15 +117,8 @@ img {
 
 .mid_nav_message{
     text-align: left;
-    margin-left: 30px;
     padding-top: 3%;
-    font-size: large;
-}
-
-.mid_nav_message2{
-    text-align: left;
-    margin-left: 45px;
-    font-size: large;
+    font-size: 200%;
 }
 
 /*
