@@ -1,7 +1,11 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 import requests, json, operator
 
-app = Flask(__name__, instance_relative_config=True)
+# instance is set for development code
+#app = Flask(__name__, instance_relative_config=True)
+
+# instance is disabled for production code (ie: on heroku)
+app = Flask(__name__, instance_relative_config=False)
 
 # Load the default configuration
 app.config.from_object('config')
