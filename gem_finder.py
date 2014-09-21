@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-import requests, json, operator
+import requests, json, operator, os
 
 # instance is set for development code
 #app = Flask(__name__, instance_relative_config=True)
@@ -41,7 +41,7 @@ def search_mix(tags_query,gemList_query):
 	dictionary_list = []
 	if tags_query and gemList_query:
 		#api = app.config['API_KEY']
-		api = environ.get('API_KEY')
+		api = os.environ.get('API_KEY')
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
 		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
 		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
