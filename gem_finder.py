@@ -2,13 +2,9 @@ from flask import Flask, request, session, g, redirect, url_for, abort, render_t
 import requests, json, operator
 
 app = Flask(__name__)
-app.config.from_object(__name__)
+app.config.from_object('config')
 app.jinja_env.add_extension("jinja2.ext.loopcontrols")
 
-app.config.update(dict(
-	DEBUG = True,
-	SECRET_KEY = 'DevKey'
-))
 
 @app.route('/', methods=['GET','POST'])
 def show_index():

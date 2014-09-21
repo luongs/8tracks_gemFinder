@@ -7,6 +7,7 @@ mixes. Written in python using the Flask framework.
 ================
 Next steps:
 
+* Update UI for mobile
 * Incorporate link inside img src
 * Add arrow to 'Dig up popular mixes'
 * Create an icon 
