@@ -1,11 +1,11 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 import requests, json, operator, os
 
-# instance is set for development code
-#app = Flask(__name__, instance_relative_config=True)
-
-# instance is disabled for production code (ie: on heroku)
-app = Flask(__name__, instance_relative_config=False)
+# Detect if environment is run locally or on heroku
+if os.environ.get('HEROKU') is None: 
+	app = Flask(__name__, instance_relative_config=True)	# instance is set for development code (local)
+else: 
+	app = Flask(__name__, instance_relative_config=False)	# instance is disabled for production code (ie: on heroku)
 
 # Load the default configuration
 app.config.from_object('config')
@@ -13,8 +13,10 @@ app.config.from_object('config')
 #Load the configuration from the instance folder
 app.config.from_pyfile('config.py')
 
-app.jinja_env.add_extension("jinja2.ext.loopcontrols")
-
+if os.environ.get('HEROKU') is None: 
+	api = app.config['API_KEY']		# retrieve API key from local config file
+else:
+	api = os.environ.get('API_KEY')	# retrieve API key from heroku config vars
 
 @app.route('/', methods=['GET','POST'])
 def show_index():
@@ -40,8 +42,6 @@ def show_index():
 def search_mix(tags_query,gemList_query): 
 	dictionary_list = []
 	if tags_query and gemList_query:
-		#api = app.config['API_KEY']
-		api = os.environ.get('API_KEY')
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
 		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
 		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
