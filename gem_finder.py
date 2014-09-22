@@ -76,8 +76,10 @@ def search_mix(tags_query,gemList_query):
 			# list is empty
 	if not dictionary_list:
 		mix_dictionary = collections.OrderedDict()
-		mix_dictionary['empty'] = 'No mixes found! Try again with different certifications or tags'
+		mix_dictionary['name'] ='-'
+		mix_dictionary['certification'] = '-'
 		mix_dictionary['likes_count'] = 0
+		mix_dictionary[''] = 'No mixes found! Try again with different tags or certifications'
 		dictionary_list.append(mix_dictionary)
 	return dictionary_list
 
