@@ -16,7 +16,9 @@ app.config.from_pyfile('config.py')
 if os.environ.get('HEROKU') is None: 
 	api = app.config['API_KEY']		# retrieve API key from local config file
 else:
-	api = os.environ.get('API_KEY')	# retrieve API key from heroku config vars
+	api = os.environ['API_KEY']	# retrieve API key from heroku config vars
+
+print(api)
 
 @app.route('/', methods=['GET','POST'])
 def show_index():
