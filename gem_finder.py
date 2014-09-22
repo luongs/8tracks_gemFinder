@@ -73,6 +73,12 @@ def search_mix(tags_query,gemList_query):
 						mix_dictionary['certification'] = results['certification']
 						mix_dictionary['likes_count'] = results['likes_count']
 						dictionary_list.append(mix_dictionary)
+			# list is empty
+	if not dictionary_list:
+		mix_dictionary = collections.OrderedDict()
+		mix_dictionary['empty'] = 'No mixes found, try again!'
+		mix_dictionary['likes_count'] = 0
+		dictionary_list.append(mix_dictionary)
 	return dictionary_list
 
 if __name__ == '__main__':

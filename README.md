@@ -31,6 +31,7 @@ Completed:
 * Remove secret key and api key from github commited file
 * Update UI for mobile
 * Incorporate link inside img src
+* Add notice that no result has been found if results are empty
 
 ================
 Future features: 
