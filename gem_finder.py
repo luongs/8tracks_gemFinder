@@ -14,7 +14,7 @@ app.config.from_object('config')
 app.config.from_pyfile('config.py')
 
 if os.environ.get('HEROKU') is None: 
-	api = app.config['API_KEY']		# retrieve API key from local config file
+	api = app.config['API_KEY']	# retrieve API key from local config file
 else:
 	api = os.environ.get('API_KEY')	# retrieve API key from heroku config vars
 	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')	# set SECRET_KEY from heroku

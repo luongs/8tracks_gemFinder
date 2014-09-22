@@ -7,7 +7,6 @@ mixes. Written in python using the Flask framework.
 ================
 Next steps:
 
-* Update UI for mobile
 * Incorporate link inside img src
 * Add arrow to 'Dig up popular mixes'
 * Create an icon 
@@ -31,6 +30,7 @@ Completed:
 * App is deployed on Heroku
 * Create a secure and random secret key
 * Remove secret key and api key from github commited file
+* Update UI for mobile
 
 ================
 Future features: 
