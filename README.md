@@ -11,8 +11,6 @@ Next steps:
 * Incorporate link inside img src
 * Add arrow to 'Dig up popular mixes'
 * Create an icon 
-* Create a secure and random secret key
-* Remove secret key and api key from github commited file
 * Limit on an individual IP's search to prevent DoS
 
 ================ 
@@ -31,6 +29,8 @@ Completed:
 * Sort results by gem level if more than 1 certification is selected 
 * Display mix pictures 
 * App is deployed on Heroku
+* Create a secure and random secret key
+* Remove secret key and api key from github commited file
 
 ================
 Future features: 
