@@ -66,8 +66,8 @@ def search_mix(tags_query,gemList_query):
 				for results in json_result['mix_set']['mixes']:
 					if (results['certification']==gem):
 						mix_dictionary = {}
-						mix_dictionary['image'] = results['cover_urls']['sq133']
-						mix_dictionary['path'] = results['path']
+						image_path =[results['path'], results['cover_urls']['sq133']]
+						mix_dictionary['img_path'] = image_path
 						
 						mix_dictionary['likes_count'] = results['likes_count']
 						mix_dictionary['certification'] = results['certification']

@@ -122,16 +122,13 @@
             {% for node in dictionary_list %}
                 <table class="result_table" >
                 {% for key, value in node.iteritems() %}
-                        {% if key == 'image' %}
-			                <tr>
-                            <td class="mid_nav_img"><img src={{ value }} alt="mix_cover"></td>
+                        {% if key == 'img_path' %}
+                            <tr>
+                                <td class="mid_nav_img">
+                                    <a href= {{"http://8tracks.com"+value.0}} target="_blank">
+                                        <img src={{value.1}} alt="mix_cover"></a></td>
                             <td></td>
                             </tr>
-                        {% elif key == 'path' %}
-                            <tr>             
-                            <td class="mid_nav_path"><a href={{ "http://8tracks.com"+value }} target="_blank">Link</a></td>
-                            <td></td>
-                        </tr>
                         {% elif key == 'likes_count' %}
                         <tr>
                             <th>likes count</th>
