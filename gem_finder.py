@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-import requests, json, operator, os
+import requests, json, operator, os, collections
 
 # Detect if environment is run locally or on heroku
 if os.environ.get('HEROKU') is None: 
@@ -65,15 +65,13 @@ def search_mix(tags_query,gemList_query):
 			for gem in gemList_query:	
 				for results in json_result['mix_set']['mixes']:
 					if (results['certification']==gem):
-						mix_dictionary = {}
+						# use ordered dictionary to retrieve keys in the same order they were added 
+						mix_dictionary = collections.OrderedDict()
 						image_path =[results['path'], results['cover_urls']['sq133']]
-						mix_dictionary['img_path'] = image_path
-						
-						mix_dictionary['likes_count'] = results['likes_count']
-						mix_dictionary['certification'] = results['certification']
+						mix_dictionary['img_path'] = image_path		#list must be used to hold both items
 						mix_dictionary['name'] = results['name']
-
-						
+						mix_dictionary['certification'] = results['certification']
+						mix_dictionary['likes_count'] = results['likes_count']
 						dictionary_list.append(mix_dictionary)
 	return dictionary_list
 
