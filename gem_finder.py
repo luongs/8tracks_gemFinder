@@ -41,6 +41,10 @@ def show_index():
 		sorted_dictionary_list = sorted(dictionary_list, key = operator.itemgetter('likes_count'), reverse = True)
 	return render_template('index.html', dictionary_list = sorted_dictionary_list, session = session)
 
+@app.route("/sitemap.xml", methods=["GET"])
+def sitemap():	
+    return render_template('sitemap.xml')
+
 def search_mix(tags_query,gemList_query): 
 	dictionary_list = []
 	if tags_query and gemList_query:
