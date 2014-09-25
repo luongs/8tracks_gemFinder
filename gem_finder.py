@@ -19,7 +19,6 @@ else:
 	api = os.environ.get('API_KEY')	# retrieve API key from heroku config vars
 	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')	# set SECRET_KEY from heroku
 
-
 @app.route('/', methods=['GET','POST'])
 def show_index():
 	result = None

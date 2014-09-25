@@ -8,7 +8,6 @@ mixes. Written in python using the Flask framework.
 Next steps:
 
 * Add arrow to 'Dig up popular mixes'
-* Create an icon 
 * Limit on an individual IP's search to prevent DoS
 
 ================ 
@@ -32,6 +31,7 @@ Completed:
 * Update UI for mobile
 * Incorporate link inside img src
 * Add notice that no result has been found if results are empty
+* Create an icon 
 
 ================
 Future features: 
