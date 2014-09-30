@@ -8,12 +8,5 @@
 
 <url>
   <loc>http://gem-finder.herokuapp.com/</loc>
-  <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
-     <DataObject type="document" >
-       <Attribute name="author">Sebastien Luong</Attribute>
-       <Attribute name="description">Digs up gem certified mixes within 8tracks so you don't have to</Attribute>
-       <Attribute name="keywords">8tracks, certification, top, popular, mix, platinum, diamond, gold, gem, finder</Attribute>
-     </DataObject>
-   </PageMap>
 </url>
 </urlset>
