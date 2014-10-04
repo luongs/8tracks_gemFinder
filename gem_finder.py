@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-import requests, json, operator, os, collections
+import requests, json, operator, os, collections, random
 
 # Detect if environment is run locally or on heroku
 if os.environ.get('HEROKU') is None: 
@@ -49,13 +49,16 @@ def sitemap():
 
 def get_popular_tags():
 	popular_tag_list = []
+	random_tag_list = []
 	top_tag_url = 'http://8tracks.com/tags.json?api_key='+api+'?api_version=3'
 	r = requests.get(top_tag_url)
 	r.text
 	json_result = json.loads(r.text)
 	for tag_cloud in json_result['tag_cloud']['tags']:
 		popular_tag_list.append(tag_cloud['name'])
-	return popular_tag_list 
+	# return a randomized list of the top 5
+	random_tag_list = random.sample(popular_tag_list, 5)
+	return random_tag_list 
 
 
 def search_mix(tags_query,gemList_query): 
