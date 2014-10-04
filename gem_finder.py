@@ -47,15 +47,24 @@ def sitemap():
 def search_mix(tags_query,gemList_query): 
 	dictionary_list = []
 	if tags_query and gemList_query:
+		MAX_PAGE = 10
+		FILTER = "popular"
 		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
 		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
 		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
 		# 8tracks API only accepts space as underscores 
 		tags_query = tags_query.lower().replace(" ","_")
 		
-		for i in range(1,10):
+		# detect if 'gem' has been picked from list
+		for gem in gemList_query:
+			if gem=='gem':
+				MAX_PAGE = 20
+				FILTER = "trending"
+
+
+		for i in range(1,MAX_PAGE):
 			mix_url = "http://8tracks.com/mix_sets/tags:"+tags_query+\
-						":popular.json?include=mixes[likes_count]&page="+str(i)+\
+						":"+FILTER+".json?include=mixes[likes_count]&page="+str(i)+\
 						"&api_key="+api+'&api_version=3'
 			r = requests.get(mix_url)
 			r.text
