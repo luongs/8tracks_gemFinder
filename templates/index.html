@@ -165,6 +165,16 @@
         {% else %}
             <!-- displayed message when no session value is set -->
             <h3 class="mid_nav_message">Dig up popular mixes!</h3>
+            <h4 class="mid_nav_h4">Try these tags or any on 8tracks</h4>
+            {% if popular_tag_list %}
+                <table class="tag_table">
+                {% for node in popular_tag_list %}
+                    <tr>
+                        <th>{{ node }}</th>
+                        </tr>
+                {% endfor %}
+                </table>
+            {% endif %}
         {% endif %}
         
     </div>

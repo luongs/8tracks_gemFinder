@@ -25,6 +25,7 @@ def show_index():
 	dictionary_list = []
 	sorted_dictionary_list = []
 	gemList_query = []
+	popular_tag_list = []
 	tags_query = ''
 	# give choice to search through popular or trending		
 	if request.method == 'POST':
@@ -38,20 +39,30 @@ def show_index():
 		dictionary_list = search_mix(tags_query,gemList_query)
 		# sorts dictionary in terms of gem value
 		sorted_dictionary_list = sorted(dictionary_list, key = operator.itemgetter('likes_count'), reverse = True)
-	return render_template('index.html', dictionary_list = sorted_dictionary_list, session = session)
+	else:
+		popular_tag_list = get_popular_tags()
+	return render_template('index.html', dictionary_list = sorted_dictionary_list, popular_tag_list = popular_tag_list, session = session)
 
 @app.route("/sitemap.xml", methods=["GET"])
 def sitemap():	
     return render_template('sitemap.xml')
+
+def get_popular_tags():
+	popular_tag_list = []
+	top_tag_url = 'http://8tracks.com/tags.json?api_key='+api+'?api_version=3'
+	r = requests.get(top_tag_url)
+	r.text
+	json_result = json.loads(r.text)
+	for tag_cloud in json_result['tag_cloud']['tags']:
+		popular_tag_list.append(tag_cloud['name'])
+	return popular_tag_list 
+
 
 def search_mix(tags_query,gemList_query): 
 	dictionary_list = []
 	if tags_query and gemList_query:
 		MAX_PAGE = 10
 		FILTER = "popular"
-		api_url = 'https://8tracks.com/sets/new.json?api_key='+api+'?api_version=3'
-		#mix_url = "http://8tracks.com/mix_sets/all.json?include=mixes[likes_count+3]&api_key="+api	
-		top_tag_url = "http://8tracks.com/tags.json?api_key="+api
 		# 8tracks API only accepts space as underscores 
 		tags_query = tags_query.lower().replace(" ","_")
 		

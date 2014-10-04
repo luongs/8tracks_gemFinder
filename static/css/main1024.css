@@ -108,6 +108,10 @@ img {
     margin-top: 2%;
 }
 
+.tag_table{
+    margin-left: 15%;
+}
+
 .mid_nav_img{
     display: block;
     margin-left: 28%;
@@ -122,6 +126,12 @@ img {
     text-align: left;
     padding-top: 3%;
     font-size: 200%;
+}
+
+.mid_nav_h4{
+    text-align: center;
+    margin-right: 42%;
+    padding-bottom: 3%;
 }
 
 
