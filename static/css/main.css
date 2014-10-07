@@ -48,14 +48,19 @@ input {
     font-family: 'Source Sans Pro', sans-serif; 
 }
 
-table, tr {
+table {
     
     /*margin: 30px; */
     padding: 30px;
-    border:2px solid;
+
     border-collapse:collapse;
     table-layout: fixed;
 }
+
+tr {
+    border: 2px solid;
+}
+
 
 th {
     font-size: small;
@@ -97,7 +102,7 @@ img {
 #queryBox{
     margin-top: 2%;
     margin-bottom: 10%;
-    width: auto;
+    width:auto;
 }
 
 #select_certification {
@@ -106,6 +111,7 @@ img {
 
 .result_table{
     margin-top: 2%;
+    border:2px solid;
 }
 
 .tag_table{
