@@ -14,10 +14,10 @@ Description: App queries the 8tracks API for mixes according to genre
 
 # Detect if environment is run locally or on heroku
 if os.environ.get('HEROKU') is None: 
-	# instance is set for development code (local)
+	# Instance is set for development code (local)
 	app = Flask(__name__, instance_relative_config=True)	
 else:
-	# instance is disabled for production code (ie: on heroku) 
+	# Instance is disabled for production code (ie: on heroku) 
 	app = Flask(__name__, instance_relative_config=False)
 
 # Load the default configuration
@@ -27,12 +27,12 @@ app.config.from_object('config')
 app.config.from_pyfile('config.py')
 
 if os.environ.get('HEROKU') is None: 
-	# retrieve API key from local config file
+	# Retrieve API key from local config file
 	api = app.config['API_KEY']	
 else:
-	# retrieve API key from heroku config vars
+	# Retrieve API key from heroku config vars
 	api = os.environ.get('API_KEY')	
-	# set SECRET_KEY from heroku
+	# Set SECRET_KEY from heroku
 	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')	
 
 
@@ -44,18 +44,18 @@ def show_index():
 	gemList_query = []
 	popular_tag_list = []
 	tags_query = ''
-	# give choice to search through popular or trending		
+	# Give choice to search through popular or trending		
 	if request.method == 'POST':
-		# update input boxes with latest data
+		# Update input boxes with latest data
 		session.clear()
-		# get input request
+		# Get input request
 		gemList_query = request.form.getlist('certification')
 		tags_query = request.form['queryBox']
 		session['gem'] = gemList_query
-		# returns format that can be displayed on session
+		# Returns format that can be displayed on session
 		session['query'] = tags_query.lower().replace(" ","_")
 		dictionary_list = search_mix(tags_query,gemList_query)
-		# sorts dictionary in terms of gem value
+		# Sorts dictionary in terms of gem value
 		sorted_dictionary_list = sorted(dictionary_list, key = operator.itemgetter('likes_count'), reverse = True)
 	else:
 		popular_tag_list = get_popular_tags()
@@ -76,7 +76,7 @@ def get_popular_tags():
 	json_result = json.loads(r.text)
 	for tag_cloud in json_result['tag_cloud']['tags']:
 		popular_tag_list.append(tag_cloud['name'])
-	# return a randomized list of the top 5
+	# Return a randomized list of the top 5
 	random_tag_list = random.sample(popular_tag_list, 5)
 	return random_tag_list 
 
@@ -89,7 +89,7 @@ def search_mix(tags_query,gemList_query):
 		# 8tracks API only accepts space as underscores 
 		tags_query = tags_query.lower().replace(" ","_")
 		
-		# detect if 'gem' has been picked from list
+		# Detect if 'gem' has been picked from list
 		for gem in gemList_query:
 			if gem=='gem':
 				MAX_PAGE = 20
@@ -110,16 +110,16 @@ def search_mix(tags_query,gemList_query):
 			for gem in gemList_query:	
 				for results in json_result['mix_set']['mixes']:
 					if (results['certification']==gem):
-						# use ordered dictionary to retrieve keys in the same order they were added 
+						# Use ordered dictionary to retrieve keys in the same order they were added 
 						mix_dictionary = collections.OrderedDict()
-						#list must be used to hold both path and image link
+						# List must be used to hold both path and image link
 						image_path =[results['path'], results['cover_urls']['sq133']]
 						mix_dictionary['img_path'] = image_path		
 						mix_dictionary['name'] = results['name']
 						mix_dictionary['certification'] = results['certification']
 						mix_dictionary['likes_count'] = results['likes_count']
 						dictionary_list.append(mix_dictionary)
-	# list is empty
+	# List is empty
 	if not dictionary_list:
 		mix_dictionary = collections.OrderedDict()
 		mix_dictionary['name'] ='-'
