@@ -38,6 +38,11 @@ else:
 
 @app.route('/', methods=['GET','POST'])
 def show_index():
+	"""
+	Initializes data structures with user response from webpage.
+	Calls search_mix() to populate dictionary and returns results
+	in html page. 
+	"""
 	result = None
 	dictionary_list = []
 	sorted_dictionary_list = []
@@ -63,11 +68,17 @@ def show_index():
 
 
 @app.route("/sitemap.xml", methods=["GET"])
-def sitemap():	
+def sitemap():
+	"""
+	Sitemap used for google's webcrawler
+	"""	
     return render_template('sitemap.xml')
 
 
 def get_popular_tags():
+	"""
+	Returns five random tag suggestions to be displayed on index page
+	"""
 	popular_tag_list = []
 	random_tag_list = []
 	top_tag_url = 'http://8tracks.com/tags.json?api_key='+api+'?api_version=3'
@@ -82,6 +93,9 @@ def get_popular_tags():
 
 
 def search_mix(tags_query,gemList_query): 
+	"""
+	Queries 8tracks API using user input genre and certification level.
+	"""
 	dictionary_list = []
 	if tags_query and gemList_query:
 		MAX_PAGE = 10
