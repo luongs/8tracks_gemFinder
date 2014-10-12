@@ -69,9 +69,6 @@ def show_index():
 
 @app.route("/sitemap.xml", methods=["GET"])
 def sitemap():
-	"""
-	Sitemap used for google's webcrawler
-	"""	
     return render_template('sitemap.xml')
 
 
