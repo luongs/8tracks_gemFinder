@@ -1,11 +1,24 @@
+import requests
+import json
+import operator
+import os 
+import collections
+import random
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-import requests, json, operator, os, collections, random
+
+'''
+Author: Sebastien Luong
+Description: App queries the 8tracks API for mixes according to genre
+			 and certification levels (Diamond, platinum, gold, gem)
+'''
 
 # Detect if environment is run locally or on heroku
 if os.environ.get('HEROKU') is None: 
-	app = Flask(__name__, instance_relative_config=True)	# instance is set for development code (local)
-else: 
-	app = Flask(__name__, instance_relative_config=False)	# instance is disabled for production code (ie: on heroku)
+	# instance is set for development code (local)
+	app = Flask(__name__, instance_relative_config=True)	
+else:
+	# instance is disabled for production code (ie: on heroku) 
+	app = Flask(__name__, instance_relative_config=False)
 
 # Load the default configuration
 app.config.from_object('config')
@@ -14,10 +27,14 @@ app.config.from_object('config')
 app.config.from_pyfile('config.py')
 
 if os.environ.get('HEROKU') is None: 
-	api = app.config['API_KEY']	# retrieve API key from local config file
+	# retrieve API key from local config file
+	api = app.config['API_KEY']	
 else:
-	api = os.environ.get('API_KEY')	# retrieve API key from heroku config vars
-	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')	# set SECRET_KEY from heroku
+	# retrieve API key from heroku config vars
+	api = os.environ.get('API_KEY')	
+	# set SECRET_KEY from heroku
+	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')	
+
 
 @app.route('/', methods=['GET','POST'])
 def show_index():
@@ -35,7 +52,8 @@ def show_index():
 		gemList_query = request.form.getlist('certification')
 		tags_query = request.form['queryBox']
 		session['gem'] = gemList_query
-		session['query'] = tags_query.lower().replace(" ","_")		# returns format that can be displayed on session
+		# returns format that can be displayed on session
+		session['query'] = tags_query.lower().replace(" ","_")
 		dictionary_list = search_mix(tags_query,gemList_query)
 		# sorts dictionary in terms of gem value
 		sorted_dictionary_list = sorted(dictionary_list, key = operator.itemgetter('likes_count'), reverse = True)
@@ -43,9 +61,11 @@ def show_index():
 		popular_tag_list = get_popular_tags()
 	return render_template('index.html', dictionary_list = sorted_dictionary_list, popular_tag_list = popular_tag_list, session = session)
 
+
 @app.route("/sitemap.xml", methods=["GET"])
 def sitemap():	
     return render_template('sitemap.xml')
+
 
 def get_popular_tags():
 	popular_tag_list = []
@@ -75,7 +95,6 @@ def search_mix(tags_query,gemList_query):
 				MAX_PAGE = 20
 				FILTER = "trending"
 
-
 		for i in range(1,MAX_PAGE):
 			mix_url = "http://8tracks.com/mix_sets/tags:"+tags_query+\
 						":"+FILTER+".json?include=mixes[likes_count]&page="+str(i)+\
@@ -93,13 +112,14 @@ def search_mix(tags_query,gemList_query):
 					if (results['certification']==gem):
 						# use ordered dictionary to retrieve keys in the same order they were added 
 						mix_dictionary = collections.OrderedDict()
+						#list must be used to hold both path and image link
 						image_path =[results['path'], results['cover_urls']['sq133']]
-						mix_dictionary['img_path'] = image_path		#list must be used to hold both items
+						mix_dictionary['img_path'] = image_path		
 						mix_dictionary['name'] = results['name']
 						mix_dictionary['certification'] = results['certification']
 						mix_dictionary['likes_count'] = results['likes_count']
 						dictionary_list.append(mix_dictionary)
-			# list is empty
+	# list is empty
 	if not dictionary_list:
 		mix_dictionary = collections.OrderedDict()
 		mix_dictionary['name'] ='-'
@@ -110,5 +130,4 @@ def search_mix(tags_query,gemList_query):
 	return dictionary_list
 
 if __name__ == '__main__':
-	app.debug = True
 	app.run()
