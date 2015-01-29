@@ -3,6 +3,7 @@ import json
 import operator
 import os 
 import collections
+import cgi
 import random
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 
@@ -35,6 +36,8 @@ else:
 	# Set SECRET_KEY from heroku
 	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')	
 
+def escape_html(s):
+    return cgi.escape(s, quote=True)
 
 @app.route('/', methods=['GET','POST'])
 def show_index():
@@ -56,6 +59,7 @@ def show_index():
 		# Get input request
 		gemList_query = request.form.getlist('certification')
 		tags_query = request.form['queryBox']
+		tags_query = escape_html(tags_query)
 		session['gem'] = gemList_query
 		# Returns format that can be displayed on session
 		session['query'] = tags_query.lower().replace(" ","_")
