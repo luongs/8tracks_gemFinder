@@ -37,7 +37,10 @@ else:
 	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')	
 
 def escape_html(s):
-    return cgi.escape(s, quote=True)
+	escape_string = cgi.escape(s, quote=True)
+	# Allow ampersand character for queries such as r&b
+	ampersand_string = escape_string.replace("&amp;", "&")
+	return ampersand_string
 
 @app.route('/', methods=['GET','POST'])
 def show_index():
