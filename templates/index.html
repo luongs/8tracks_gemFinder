@@ -27,7 +27,7 @@
         <link rel="stylesheet" media="screen and (min-width:1000px)" type=text/css href="{{ url_for('static', filename='css/main1024.css')}}">
         <!-- css for screen size above 1024 -->
         <link rel="stylesheet" media="screen and (min-width:1280px)" type=text/css href="{{ url_for('static', filename='css/main.css')}}">
-        <!-- fonts taken from google fonts --> 
+        <!-- fonts taken from google fonts -->
         <link href='http://fonts.googleapis.com/css?family=PT+Sans|Lobster' rel='stylesheet' type='text/css'>
         <!-- jQuery plugins -->
         <link href="{{ url_for('static', filename = 'jquery-ui-1.11.1.custom/jquery-ui.css')}}" rel="stylesheet">
@@ -63,14 +63,14 @@
             <h1> Gem Finder </h1>
         </div>
         <div id="below_app_name">
-            <h4> ENTER TAGS BELOW </h4> 
+            <h4> ENTER TAGS BELOW </h4>
         </div>
             <h5> add '+' to add multiple tags</h5>
-        <form action='/' method="POST">
+        <form action='/' method="GET">
         {% if session['query'] %}
-        <input name="queryBox" id="queryBox" placeholder="eg: british + chill" value={{session['query'] | e}}> </input><br/>
+        <input name="tags" id="tags" placeholder="eg: british + chill" value={{session['query'] | e}}> </input><br/>
         {% else %}
-        <input name="queryBox" id="queryBox" placeholder="eg: british + chill" value=""> </input><br/>
+        <input name="tags" id="tags" placeholder="eg: british + chill" value=""> </input><br/>
         {% endif %}
         <div id="select_certification">
             <h4> Select Certification </h4>
@@ -82,7 +82,7 @@
             {% set platinum = [] %}
             {% set gold = [] %}
             {% set gem = [] %}
-            
+
             {# Checks session value saving of certification checkboxes #}
             {% for value in session['gem'] %}
                 {% if value == 'diamond' %}
@@ -117,7 +117,7 @@
             {% if not gold %}
                 <input type="checkbox" name="certification" value="gold" id="gold" title="100 likes or more"><label for="gold">Gold   </label><br />
             {% else %}
-                <input type="checkbox" name="certification" value="gold" id="gold" title="100 likes or more" checked><label for="gold">Gold   </label><br />          
+                <input type="checkbox" name="certification" value="gold" id="gold" title="100 likes or more" checked><label for="gold">Gold   </label><br />
             {% endif %}
             {% if not gem %}
                 <input type="checkbox" name="certification" value="gem" id="gem"><label for="gem">Gem   </label><br />
@@ -177,7 +177,7 @@
                 </table>
             {% endif %}
         {% endif %}
-        
+
     </div>
     </body>
 </html>
