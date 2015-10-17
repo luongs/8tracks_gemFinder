@@ -68,11 +68,11 @@
             <h4> ENTER TAGS BELOW </h4>
         </div>
             <h5> add '+' to add multiple tags</h5>
-        <form action='/' method="POST">
+        <form action='/' method="GET">
         {% if session['query'] %}
-        <input name="queryBox" id="queryBox" placeholder="eg: british + chill" value={{session['query'] | e}}> </input><br/>
+        <input name="tags" id="tags" placeholder="eg: british + chill" value={{session['query'] | e}}> </input><br/>
         {% else %}
-        <input name="queryBox" id="queryBox" placeholder="eg: british + chill" value=""> </input><br/>
+        <input name="tags" id="tags" placeholder="eg: british + chill" value=""> </input><br/>
         {% endif %}
         <div id="select_certification">
             <h4> Select Certification </h4>
@@ -129,9 +129,9 @@
 
         {% else %}
             <input type="checkbox" name="certification" value="diamond" id="diamond" title="10,000 likes or more"><label for="diamond">Diamond</label><br />
-            <input type="checkbox" name="certification" value="platinum" title="1000 likes or more" id="platinum"  checked><label for="platinum">Platinum</label><br />
-            <input type="checkbox" name="certification" value="gold" id="gold" title="100 likes or more"><label for="gold">Gold</label><br />
-            <input type="checkbox" name="certification" value="gem" id="gem"><label for="gem">Gem</label><br />
+            <input type="checkbox" name="certification" value="platinum" title="1000 likes or more" id="platinum" checked><label for="platinum">Platinum</label><br />
+            <input type="checkbox" name="certification" value="gold" id="gold" title="100 likes or more" checked><label for="gold">Gold</label><br />
+            <input type="checkbox" name="certification" value="gem" id="gem" checked><label for="gem">Gem</label><br />
         {% endif %}
         <br />
         </div>
